@@ -1,10 +1,16 @@
 defmodule Cards do
   def create_deck do
-    cards = ["Ace", "Two", "Three"]
-    Enum.map(
-      Enum.to_list(1..Enum.count(cards)),
-      fn i -> String.downcase(Enum.at(cards, i - 1)) end
-    )
+    values = [
+      "Ace", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine",
+      "Jack", "Queen", "King"
+    ]
+    suits = ["Spades", "Clubs", "Hearts", "Diamonds"]
+
+    cards = for value <- values do
+      for suit <- suits, do: "#{value} of #{suit}"
+    end
+
+    List.flatten(cards)
   end
 
   def shuffle(deck) do
@@ -12,6 +18,6 @@ defmodule Cards do
   end
 
   def contains?(deck, card) do
-    Enum.member?(deck, String.downcase(card))
+    Enum.member?(deck, String.capitalize(card))
   end
 end
