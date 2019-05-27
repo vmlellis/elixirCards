@@ -14,6 +14,7 @@ defmodule Cards do
   end
 
   def contains?(deck, card) do
-    Enum.member?(deck, String.capitalize(card))
+    cards = for card <- deck, do: String.downcase(card)
+    Enum.member?(cards, String.downcase(card))
   end
 end
