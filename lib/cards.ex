@@ -17,4 +17,9 @@ defmodule Cards do
     cards = for card <- deck, do: String.downcase(card)
     Enum.member?(cards, String.downcase(card))
   end
+
+  def deal(deck, hand_size) do
+    { hand, _rest_of_deck } = Enum.split(shuffle(deck), hand_size)
+    hand
+  end
 end
