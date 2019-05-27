@@ -1,13 +1,9 @@
 defmodule Cards do
-  def hello do
-    :world
+  def create_deck do
+    ["Ace", "Two", "Three"]
   end
 
-  def new_hello do
-    "hi there!"
-  end
-
-  def hello(name) do
-    "hello #{name}"
+  def shuffle(deck) do
+    Enum.shuffle(deck)
   end
 end
