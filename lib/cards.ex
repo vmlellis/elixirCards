@@ -18,8 +18,15 @@ defmodule Cards do
     Enum.member?(cards, String.downcase(card))
   end
 
+  @doc """
+  Returns {hand, rest_of_deck}
+  """
   def deal(deck, hand_size) do
-    {hand, _rest_of_deck} = Enum.split(shuffle(deck), hand_size)
-    hand
+    Enum.split(deck, hand_size)
+  end
+
+  def save(deck, filename) do
+    binary = :erlang.term_to_binary(deck)
+    File.write(filename, binary)
   end
 end
